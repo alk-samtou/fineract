@@ -17,6 +17,7 @@ steps:
     azureContainerRegistry: '{"loginServer":"mfpdev.azurecr.io", "id" : "/subscriptions/b53c773b-b409-43bd-b2ea-95fe8fd9b5c2/resourceGroups/mfp-dev/providers/Microsoft.ContainerRegistry/registries/mfpdev"}'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'rm --all'
 
 - task: PublishPipelineArtifact@1
   inputs:
