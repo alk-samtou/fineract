@@ -26,12 +26,15 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_e92c2abca0574d3eb2632ea110122864 }}
         password: ${{ secrets.AzureAppService_ContainerPassword_f7f50c88ef034286bb73f664f556928f }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v2
+    - name: Docker-Compose Publish
+      # You may pin to the exact commit or the version.
+      # uses: pennsignals/publish_docker-compose@da09b48fff3a4c34dd78fe112cbb5c001e2a9582
+      uses: pennsignals/publish_docker-compose@v0.1.1
       with:
-        push: true
-        tags: mfpimages.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e92c2abca0574d3eb2632ea110122864 }}/fineract:${{ github.sha }}
-        file: ./Dockerfile
+        # Release version (tag)
+        # docker-compose file to build and publish images from
+        docker_compose: docker-compose.yml
+        # Github Repo token
 
   deploy:
     runs-on: ubuntu-latest
