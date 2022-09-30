@@ -13,6 +13,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'mfpimages-2102'
-    repository: 'mfp'
+    repository: 'directus'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
