@@ -1,0 +1,1 @@
+FROM fineract:latest
