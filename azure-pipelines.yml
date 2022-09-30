@@ -10,17 +10,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DockerCompose@0
+- task: Docker@2
   inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'mfp-dev-resource-manager-connection'
-    azureContainerRegistry: '{"loginServer":"mfpdev.azurecr.io", "id" : "/subscriptions/b53c773b-b409-43bd-b2ea-95fe8fd9b5c2/resourceGroups/mfp-dev/providers/Microsoft.ContainerRegistry/registries/mfpdev"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'rm --all'
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.SourcesDirectory)'
-    artifactType: 'pipeline'
-    artifactName: 'mfp'
+    containerRegistry: 'mfpimages-2102'
+    repository: 'mfp'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
