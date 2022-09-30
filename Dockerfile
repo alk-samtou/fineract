@@ -1,1 +1,1 @@
-FROM fineract:latest
+FROM apache/fineract
